@@ -1,1 +1,0 @@
-SlirpiNext.exe Tonga_Config.csv SlirpiNextV2_Apps_Tonga.csv E:\SlirpiNextV2_Results\2016-07-27-11-00-SlirpiNext-xcliu-perframe_trace_all\ Tonga -f 3 

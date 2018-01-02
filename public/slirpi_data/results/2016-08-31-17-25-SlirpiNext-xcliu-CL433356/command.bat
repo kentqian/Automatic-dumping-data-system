@@ -1,1 +1,0 @@
-SlirpiNext.exe CL433356_config.csv SlirpiNext_Apps_for_release_V1.7.3.3.csv E:\SlirpiNextV2_Results\2016-08-31-17-25-SlirpiNext-xcliu-CL433356\ Tonga -f 3 

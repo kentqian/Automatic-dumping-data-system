@@ -1,1 +1,0 @@
-SlirpiNext.exe config_for_perdraw_calculate_for_Laurent.csv SlirpiNext_Apps_added_MCS.csv E:\SlirpiNextV2_Results\2016-08-03-10-10-SlirpiNext-mtgu-perDraw_calculate_for_Laurent_with_different_frqs\ Tonga -f 3 
