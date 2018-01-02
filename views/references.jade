@@ -1,0 +1,53 @@
+extends layout
+block content
+  script(src='/javascripts/socket_test.js')
+  div.navbar.navbar-static-top(role="navigation")
+    div.container-fluid
+      div.navbar-header
+          img.img-responsive.navbar-brand(src="./images/logo.jpg", width="150", height="80")
+          a.navbar-brand#title(href='http://www.baidu.com') SLIRPI
+  div.container-fluid
+    div.row
+      div.col-md-2
+        ul#main-nav.nav.nav-tabs.nav-stacked
+          li#main_page_nav.active
+            a(href="/") <i class="fa fa-home fa-fw" aria-hidden="true"></i> Main page
+          li#intro_nav
+            a(href="/introduction") <i class="fa fa-info fa-fw" aria-hidden="true"></i> Introduction
+          li#results_nav
+            a(href="#results_second", data-toggle="collapse") <i class="fa fa-search fa-fw" aria-hidden="true"></i> Results <i class="pull-right fa fa-angle-down" aria-hidden="true"></i>
+            ul#results_second.collapse.nav.nav-list.secondmenu
+              li#shpv001_nav
+                a(href="/results/shpv001-pc") SHPV001-PC
+              li.shpv004_nav
+                a.shpv004(href="/results/shpv004-pc") SHPV004-PC
+              li.shpv005_nav
+                a.shpv005(href="/results/shpv005-pc") SHPV005-PC
+          li#key_frame_nav
+            a(href="#key_frame_second", data-toggle="collapse") <i class="fa fa-file fa-fw" aria-hidden="true"></i> Key Frames <i class="pull-right fa fa-angle-down" aria-hidden="true"></i>
+            ul#key_frame_second.collapse.nav.nav-list.secondmenu
+              li#3dc_nav
+                a#3dc 3DC Files
+              li#pm4_nav
+                a#pm4 PM4 Files
+              li#ref_nav
+                a#ref(href="/references") References
+          li
+            a(href="#user_second", data-toggle="collapse") <i class="fa fa-user fa-fw" aria-hidden="true"></i> User <i class="pull-right fa fa-angle-down" aria-hidden="true"></i>
+            ul#user_second.collapse.nav.nav-list.secondmenu
+              li
+                a User Info
+              li
+                a Log out
+          li
+            a(href="#remote_second", data-toggle="collapse") <i class="fa fa-desktop fa-fw" aria-hidden="true"></i> Resources <i class="pull-right fa fa-angle-down" aria-hidden="true"></i>
+            ul#remote_second.collapse.nav.nav-list.secondmenu
+              li
+                a SHPV030-PC
+              li
+                a SHPV025-PC
+              li
+                a SHPV026-PC
+          li
+            a(href="#") <i class="fa fa-question fa-fw" aria-hidden="true"></i> About System
+      div#main_window.col-md-10

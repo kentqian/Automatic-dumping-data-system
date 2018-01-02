@@ -1,0 +1,6 @@
+yes,no,GRBM,2,GRBM_PERF_SEL_GUI_ACTIVE," The GUI is Active 																														"
+yes,no,GRBM,3,GRBM_PERF_SEL_CP_BUSY," Any of the Command Processor (CPG/CPC/CPF) blocks are busy. 																														"
+yes,no,GRBM,4,GRBM_PERF_SEL_CP_COHER_BUSY," The Command Processor Graphics (CPG) Surface Coherency Logic is busy. 																														"
+yes,no,GRBM,5,GRBM_PERF_SEL_CP_DMA_BUSY," The Command Processor Graphics (CPG) DMA Logic is busy. 																														"
+yes,no,GRBM,6,GRBM_PERF_SEL_CB_BUSY," Any of the Color Blocks (CB) are busy in the shader engine(s). 																														"
+yes,no,GRBM,7,GRBM_PERF_SEL_DB_BUSY," Any of the Depth Blocks (DB) are busy in the shader engine(s). 																														"

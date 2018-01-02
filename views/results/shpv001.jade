@@ -1,0 +1,239 @@
+extends ../layout
+block content
+  div.navbar.navbar-static-top(role="navigation")
+    div.container-fluid
+      div.navbar-header
+          img.img-responsive.navbar-brand(src="/images/logo.jpg", width="150", height="80")
+          a.navbar-brand#title(href='http://www.baidu.com') SLIRPI
+  div.container-fluid
+    div.row
+      div.col-md-2
+        ul#main-nav.nav.nav-tabs.nav-stacked
+          li#main_page_nav
+            a(href="/") <i class="fa fa-home fa-fw" aria-hidden="true"></i> Main page
+          li#intro_nav
+            a(href="/introduction") <i class="fa fa-info fa-fw" aria-hidden="true"></i> Introduction
+          li#results_nav.active
+            a(href="#results_second", data-toggle="collapse") <i class="fa fa-search fa-fw" aria-hidden="true"></i> Results <i class="pull-right fa fa-angle-down" aria-hidden="true"></i>
+            ul#results_second.collapse.nav.nav-list.secondmenu.in
+              li#shpv001_nav
+                a(href="/results/shpv001-pc") SHPV001-PC
+              li.shpv004_nav
+                a.shpv004(href="/results/shpv004-pc") SHPV004-PC
+              li.shpv005_nav
+                a.shpv005(href="/results/shpv005-pc") SHPV005-PC
+          li#key_frame_nav
+            a(href="#key_frame_second", data-toggle="collapse") <i class="fa fa-file fa-fw" aria-hidden="true"></i> Key Frames <i class="pull-right fa fa-angle-down" aria-hidden="true"></i>
+            ul#key_frame_second.collapse.nav.nav-list.secondmenu
+              li#3dc_nav
+                a#3dc 3DC Files
+              li#pm4_nav
+                a#pm4 PM4 Files
+              li#ref_nav
+                a#ref(href="references") References
+          li
+            a(href="#user_second", data-toggle="collapse") <i class="fa fa-user fa-fw" aria-hidden="true"></i> User <i class="pull-right fa fa-angle-down" aria-hidden="true"></i>
+            ul#user_second.collapse.nav.nav-list.secondmenu
+              li
+                a User Info
+              li
+                a Log out
+          li
+            a(href="#remote_second", data-toggle="collapse") <i class="fa fa-desktop fa-fw" aria-hidden="true"></i> Resources <i class="pull-right fa fa-angle-down" aria-hidden="true"></i>
+            ul#remote_second.collapse.nav.nav-list.secondmenu
+              li
+                a SHPV030-PC
+              li
+                a SHPV025-PC
+              li
+                a SHPV026-PC
+          li
+            a(href="#") <i class="fa fa-question fa-fw" aria-hidden="true"></i> About System
+      div#main_window.col-md-10
+        div.container-fluid
+          -var up_machine_name = name.toUpperCase();
+          h2 Results for #{up_machine_name}:
+          hr
+          form.form-horizontal(role="form" method="post" action="/results/shpv001-pc/search")
+            h4 Date Time:
+            div.form-group
+              label.control-label.col-md-2(for="from_date_input") From Date:
+              div.col-md-3
+                div.input-group.date.form_datetime(data-date-format="dd MM yyyy" data-link-field="from_date_input")
+                  input#from_date.form-control(name="from_date" size="16" type="text" value="")
+                  span.input-group-addon
+                    span.glyphicon.glyphicon-th
+                input#from_date_input(type="hidden" value="")
+              label.control-label.col-md-2(for="to_date_input") To Date:
+              div.col-md-3
+                div.input-group.date.form_datetime(data-date-format="dd MM yyyy" data-link-field="to_date_input")
+                  input#to_date.form-control(name="to_date" size="16" type="text" value="")
+                  span.input-group-addon
+                    span.glyphicon.glyphicon-th
+                input#to_date_input(type="hidden" value="")
+            h4 Model:
+            div.form-group
+              div.col-md-offset-1
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Amur"/> Amur
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Anubis"/> Anubis
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="BonairePRO"/> BonairePRO
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="BonaireXT"/> BonaireXT
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Carrizo"/> Carrizo
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Ellesmere"/> <b>Ellesmere</b>
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Fiji"/> <b>Fiji</b>
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="BonaireXT"/> Fireflight
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Gladius"/> Gladius
+                </label>
+            div.form-group
+              div.col-md-offset-1
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Hainan"/> Hainan
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="HawaiiPRO"/> HawaiiPRO
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="HawaiiXT"/> <b>HawaiiXT</b>
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Iceland"/> Iceland
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Kabini"/> Kabini
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Kaveri1"/> Kaveri1
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Kryptos"/> Kryptos
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Lexa"/> Lexa
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Navi10"/> <b>Navi10</b>
+                </label>
+            div.form-group
+              div.col-md-offset-1
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Navi11"/> <b>Navi11</b>
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Navi12"/> <b>Navi12</b>
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="OlandPRO"/> OlandPRO
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="OlandXT+"/> OlandXT+
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="OlandXT"/> OlandXT
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="PitcairnLE"/> PitcairnLE
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="PitcairnPRO"/> PitcairnPRO
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="PitcairnXT"/> PitcairnXT
+                </label>
+            div.form-group
+              div.col-md-offset-1
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Polaris22"/> <b>Polaris22</b>
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="RacerX"/> RacerX
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Raven1"/> Raven1
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Raven2"/> Raven2
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Stoney"/> Stoney
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="TahitiLE"/> TahitiLE
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="TahitiPRO"/> TahitiPRO
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="TahitiXT2"/> TahitiXT2
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="TahitiXT"/> <b>TahitiXT</b>
+                </label>
+            div.form-group
+              div.col-md-offset-1
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Thebe"/> Thebe
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="TongaPRO"/> TongaPRO
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="TongaXT"/> <b>TongaXT</b>
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Vega10"/> <b>Vega10</b>
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Vega11"/> Vega11
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Vega12"/> Vega12
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="Vega20"/> Vega20
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="VerdePro"/> VerdePro
+                </label>
+                <label class="checkbox-inline"> 
+                <input type="checkbox" name="chips" value="VerdeXT"/> VerdeXT
+                </label>
+            button.btn.btn-default(type="submit") Submit
+          br
+          table.table.table-hover
+            tbody
+              each row in r
+                tr
+                  td.display_folder
+                    -var modified_row = row.path.substring(row.path.lastIndexOf("/") + 1);
+                    a(href ="#{name}"+"/"+"#{modified_row}") #{modified_row}
+      script(src='/javascripts/bootstrap-datetimepicker.min.js')
+      script(type="text/javascript").
+        $('.date').datetimepicker({
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+          });
+
+

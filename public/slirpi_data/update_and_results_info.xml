@@ -1,0 +1,64 @@
+<status>
+	<update_info>
+		<update>
+			<important></important>
+			<name>Golden Config Updated!</name>
+			<link>./slirpi_data/update_info</link>
+			<color>blue</color>
+			<pic>./images/main_page/1.png</pic>
+			<pic>./images/main_page/2.jpg</pic>
+			<pic>./images/main_page/1.png</pic>
+		</update>
+		<update>
+			<important></important>
+			<bold>bold</bold>
+			<name>Golden Config Updated!</name>
+			<link>./slirpi_data/update_info</link>
+			<pic>./images/main_page/3.jpg</pic>
+		</update>
+		<update>
+			<name>Golden Config Updated!</name>
+			<link>./slirpi_data/update_info</link>
+		</update>
+		<update>
+			<important></important>
+			<name>Golden Config Updated!</name>
+			<link>./slirpi_data/update_info</link>
+		</update>
+		<update>
+			<important></important>
+			<name>Golden Config Updated!</name>
+			<link>./slirpi_data/update_info</link>
+		</update>
+		<update>
+			<name>New Apps Added!</name>
+			<link>./slirpi_data/update_info</link>
+		</update>
+		<update>
+			<name>Mode Updated!</name>
+			<link>./slirpi_data/update_info</link>
+		</update>
+	</update_info>
+	<results>
+		<result>
+			<important></important>
+			<name>2016-08-31-17-40-SlirpiNext-xcliu-CL433301</name>
+			<link>./slirpi_data/results/2016-08-31-17-40-SlirpiNext-xcliu-CL433301/SlirpiNextResultsSummary.csv</link>
+		</result>
+		<result>
+			<important></important>
+			<name>2016-08-31-17-25-SlirpiNext-xcliu-CL433356</name>
+			<link>./slirpi_data/results/2016-08-31-17-25-SlirpiNext-xcliu-CL433356/SlirpiNextResultsSummary.csv</link>
+			<color>blue</color>
+		</result>
+		<result>
+			<name>2016-07-27-11-00-SlirpiNext-xcliu-perframe_trace_all</name>
+			<link>./slirpi_data/results/2016-07-27-11-00-SlirpiNext-xcliu-perframe_trace_all/SlirpiNextResultsSummary.csv</link>
+			<bold>bold</bold>
+		</result>
+		<result>
+			<name>2016-08-03-10-10-SlirpiNext-mtgu-perDraw_calculate_for_Laurent_with_different_frqs</name>
+			<link>./slirpi_data/results/2016-08-03-10-10-SlirpiNext-mtgu-perDraw_calculate_for_Laurent_with_different_frqs/SlirpiNextResultsSummary.csv</link>
+		</result>
+	</results>
+</status>

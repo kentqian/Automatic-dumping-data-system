@@ -1,0 +1,98 @@
+div.container-fluid
+h1 What’s SLIRPI?
+hr
+ul
+  li 
+    h3 <strong style="color:red">Sl</strong>ightly <strong style="color:red">I</strong>mproved <strong style="color:red">R</strong>elative <strong style="color:red">P</strong>erformance <strong style="color:red">I</strong>ndex
+  li
+    h3 Function
+    p Use the tapeout chip to estimate performance and power for various chip configurations
+  li 
+    h3 Input
+    ul
+      li
+        p Chip Configuration
+      li
+        p Performance counters dumped in base chip
+      li
+        p Register state dumped in base chip
+  li
+    h3 Output
+    ul
+      li
+        p Predicted performance score relative to reference chip
+      li
+        p Predicted power
+      li
+        p Bottleneck location
+h2 Input
+hr
+ul
+  li
+    h3 Chip configure
+    ul
+      li
+        p Include architectural configuration parameters that impact performance in Slirpi algorithm
+      li
+        p High level performance parameters
+        ul
+          li.text-muted
+            p
+              small Memory clock rate and memory width (channels)
+          li.text-muted
+            p
+              small Engine clock rate
+          li.text-muted
+            p
+              small CU and RB counts
+          li.text-muted
+            p
+              small Primitive rate and vertex rate
+          li.text-muted
+            p
+              small L1 L2 bandwidth
+      li
+        p Lower level architectural resource limitation impacts
+        ul
+          li.text-muted
+            p
+              small State contexts
+          li.text-muted
+            p
+              small Parameter cache and position buffer depth
+          li.text-muted
+            p
+              small SPI thread group fifo sizes
+          li.text-muted
+            p
+              small Crawler depths
+          li.text-muted
+            p
+              small RB pixel shader quad latency fifos
+          li.text-muted
+            p
+              small VGPR and SGPR depths
+          li.text-muted
+            p
+              small SQ wave resources
+          li.text-muted
+            p
+              small Shader core input and output busses
+          li.text-muted
+            p
+              small SIMDs per CU
+          li.text-muted
+            p
+              small CUs per LDS
+          li.text-muted
+            p
+              small LDS banks and size
+h2 Output
+hr
+ul
+  li
+    h3 Performance/power result: score
+    img.img-rounded.img-responsive(src="./images/introduction/output1.png")
+  li
+    h3 Bottleneck result: top5 bottleneck
+    img.img-rounded.img-responsive(src="./images/introduction/output2.png")

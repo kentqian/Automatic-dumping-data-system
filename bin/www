@@ -1,0 +1,169 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('app:server');
+var http = require('http');
+var socketio = require('socket.io');
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3333');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {  
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
+global.client_list = {};
+global.machine_list = {};
+global.dump_tasks_queue= {};
+global.machine_count = 0;
+global.client_count = 0;
+
+io = socketio.listen(server);
+
+io.sockets.on('connection', function (socket) {
+  var user_info = {};
+  socket.on('type_user', function (data){
+    
+    user_info = {
+      userId: socket.id,
+      userName: data.name,
+      userType: data.type,
+      userCpu: data.cpu,
+      userDump: false
+    };
+
+    if (user_info.userType == 'machine'){
+      machine_list[data.name] = user_info;
+      socket.join('machine_room');
+      io.sockets.to('machine_room').emit('to_machine', 'Hi machine come to machine room!');
+    }else if (user_info.userType == 'client'){
+      client_list[socket.id] = user_info;
+      socket.join('client_room');
+      io.sockets.to('client_room').emit('to_client', 'Hi client come to client room!');
+    }
+
+  });
+
+    socket.on('callback', function (data){
+      console.log(data);
+      if (machine_list[data.dump_machine] != undefined){
+        if (dump_tasks_queue[data.dump_machine].length == 0){
+          machine_list[data.dump_machine].userDump = false;
+          delete dump_tasks_queue[data.dump_machine];
+        }else{
+          io.sockets.connected[machine_list[data.dump_machine].userId].emit('to_machine', dump_tasks_queue[data.dump_machine].shift());
+        }
+      }else{
+        console.log("Callback of Dumping Error!");
+      }
+    });
+
+    socket.on('from_client', function (data){
+      if (machine_list[data.dump_machine] != undefined){
+        if (!machine_list[data.dump_machine].userDump){
+          machine_list[data.dump_machine].userDump = true;
+          dump_tasks_queue[data.dump_machine] = [data];
+          io.sockets.connected[machine_list[data.dump_machine].userId].emit('to_machine', dump_tasks_queue[data.dump_machine].shift());
+        }else{
+          dump_tasks_queue[data.dump_machine].push(data);
+          console.log("Is Dumping!\n" + dump_tasks_queue[data.dump_machine]);
+        }
+      }else{
+        console.log("No such machine!");
+      }
+    });
+
+    socket.on('disconnect', function (){
+      console.log(socket.id + ' leave!');
+      if (client_list[socket.id] != undefined){
+        delete client_list[socket.id];
+      }else{
+        for (var machine in machine_list){
+          if (socket.id == machine_list[machine].userId){
+            delete machine_list[machine];
+            delete dump_tasks_queue[machine];
+            break;
+          }
+        }
+      }
+    });
+});
+
+

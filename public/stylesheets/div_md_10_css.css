@@ -1,0 +1,20 @@
+.col-md-10 h2{
+	color: #4A515B;
+}
+
+h4 a{
+	padding-left: 10px;
+	color: #3C4049;
+}
+
+h4 a:hover{
+	color: #E60000;
+}
+
+.col-md-10 .fa-exclamation{
+	color: red;
+}
+
+.col-md-10 .form-group{
+	padding-right: 4px;
+}

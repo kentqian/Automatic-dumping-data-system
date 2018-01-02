@@ -1,0 +1,60 @@
+div.container-fluid
+  h2 3DC List
+  hr
+  div.row
+    form#exp_bat_update.form-inline(enctype="multipart/form-data")
+      fieldset
+        <input id="exp_bat" type="file" name="exp_bat" multiple="multiple" class="form-control">
+        button#exp_bat_btn.btn.btn-default.form-control(type="button" onClick="upload_bat()") Update
+    br
+    button#dump_btn.btn.btn-default(type="button" onClick="dumpOP_3dc()") GO For Dump
+  br
+  ul#pm4_hosts.nav.nav-tabs.secondmenu
+    -var isactive = true
+    each item, index in whole_3dc_list
+      if isactive
+        -isactive = false
+        li.active
+          a(href= "#" + index + '_3dc' data-toggle='tab') #{index}
+      else
+        li
+          a(href= "#" + index + '_3dc' data-toggle='tab') #{index}
+  div#pm4_each_item.tab-content
+    -var isfade = true
+    each item, index in whole_3dc_list
+      if isfade
+        -isfade = false
+        div(id = index + '_3dc').tab-pane.fade.in.active
+          table.table.table-hover
+            tbody
+              each d3dc_item in item
+                tr
+                  td
+                    div.row
+                      div.col-md-8
+                        -var sp_d3dc = d3dc_item.d3dc_list.replace(new RegExp("\\.+", "g"),"_")
+                        <input id="#{index}_#{sp_d3dc}" type="checkbox" name="#{index}" value="#{d3dc_item.d3dc_path} #{d3dc_item.d3dc_list}" onChange="checkbox_change(this.id)"/> #{d3dc_item.d3dc_list}
+                      div.col-md-4(id="#{index}_#{sp_d3dc}_trim" style="display:none")
+                        label(style="margin:0px 10px 0px 10px") From
+                        <input type="number" id="#{index}_#{sp_d3dc}_from" value="" size="9" style="width:60px" name="#{index}_from" onChange="trimed_change('#{index}_#{sp_d3dc}_full')"/>
+                        label(style="margin:0px 10px 0px 10px") To
+                        <input type="number" id="#{index}_#{sp_d3dc}_to" value="" size="9" style="width:60px" name="#{index}_to" onChange="trimed_change('#{index}_#{sp_d3dc}_full')"/>
+                        <input id="#{index}_#{sp_d3dc}_full" type="checkbox" name="#{index}_isfulltrace" onChange="checkbox_change(this.id)" style="margin:0px 2px 0px 10px"/> <strong>Full Trace </strong>
+
+      else
+        div(id = index + '_3dc').tab-pane.fade
+          table.table.table-hover
+            tbody
+              each d3dc_item in item
+                tr
+                  td
+                    div.row
+                      div.col-md-8
+                        -var sp_d3dc = d3dc_item.d3dc_list.replace(new RegExp("\\.+", "g"),"_")
+                        <input id="#{index}_#{sp_d3dc}" type="checkbox" name="#{index}" value="#{d3dc_item.d3dc_path} #{d3dc_item.d3dc_list}" onChange="checkbox_change(this.id)"/> #{d3dc_item.d3dc_list}
+                      div.col-md-4(id="#{index}_#{sp_d3dc}_trim" style="display:none")
+                        label(style="margin:0px 10px 0px 10px") From
+                        <input type="number" id="#{index}_#{sp_d3dc}_from" value="" size="9" style="width:60px" name="#{index}_from" onChange="trimed_change('#{index}_#{sp_d3dc}_full')"/>
+                        label(style="margin:0px 10px 0px 10px") To
+                        <input type="number" id="#{index}_#{sp_d3dc}_to" value="" size="9" style="width:60px" name="#{index}_to" onChange="trimed_change('#{index}_#{sp_d3dc}_full')"/>
+                        <input id="#{index}_#{sp_d3dc}_full" type="checkbox" name="#{index}_isfulltrace" onChange="checkbox_change(this.id)" style="margin:0px 2px 0px 10px"/> <strong>Full Trace </strong>

@@ -1,0 +1,14 @@
+h2 Status:
+hr
+div.row
+  each element, index in machine_list
+    if index != "_locals"
+      div.col-md-6
+        p Name: #{index}
+        p Type: #{element.userType}
+        p CPU Info: #{element.userCpu}
+        p GPU Info:
+        if element.userDump
+          p Dump Status: Dumping
+        else
+          p Dump Status: Free
